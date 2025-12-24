@@ -1,6 +1,14 @@
 'use client';
 
-const sponsors = [
+type TierType = 'platinum' | 'gold' | 'silver';
+
+interface Sponsor {
+  name: string;
+  tier: TierType;
+  logo: string;
+}
+
+const sponsors: Sponsor[] = [
   { name: 'TechCorp', tier: 'platinum', logo: 'TC' },
   { name: 'InnovateLabs', tier: 'platinum', logo: 'IL' },
   { name: 'FutureTech', tier: 'gold', logo: 'FT' },
@@ -13,7 +21,7 @@ const sponsors = [
   { name: 'CyberSphere', tier: 'silver', logo: 'CS' },
 ];
 
-const tierColors = {
+const tierColors: Record<TierType, string> = {
   platinum: 'from-gray-200 to-gray-400',
   gold: 'from-yellow-400 to-amber-500',
   silver: 'from-gray-400 to-gray-500',

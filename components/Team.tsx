@@ -2,7 +2,21 @@
 
 import { Linkedin, Twitter, Github, Mail } from 'lucide-react';
 
-const teamCategories = [
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  linkedin?: string;
+  twitter?: string;
+  github?: string;
+}
+
+interface TeamCategory {
+  title: string;
+  members: TeamMember[];
+}
+
+const teamCategories: TeamCategory[] = [
   {
     title: 'Core Team',
     members: [
