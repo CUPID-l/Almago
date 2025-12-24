@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { ArrowRight, Code, Cpu, Gamepad2, Mic, Palette, Rocket, Brain, Filter, Search } from 'lucide-react';
+import { ArrowRight, Code, Cpu, Gamepad2, Mic, Palette, Rocket, Brain, Search } from 'lucide-react';
+import { allEvents } from '@/lib/data';
 
 const categories = [
   { id: 'all', name: 'All Events', icon: Rocket },
@@ -14,165 +15,6 @@ const categories = [
   { id: 'cultural', name: 'Cultural', icon: Mic },
   { id: 'design', name: 'Design', icon: Palette },
   { id: 'ai', name: 'AI/ML', icon: Brain },
-];
-
-const allEvents = [
-  {
-    id: 1,
-    title: 'Code Conquest',
-    category: 'technical',
-    description: 'A 24-hour competitive programming challenge to test your algorithmic skills. Solve complex problems and prove your coding prowess.',
-    prize: '₹50,000',
-    team: '1-2 members',
-    date: 'March 15, 2026',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop',
-    featured: true,
-    registrationFee: '₹200',
-    venue: 'Computer Center',
-  },
-  {
-    id: 2,
-    title: 'RoboWars',
-    category: 'robotics',
-    description: 'Build and battle your robots in this exciting combat robotics competition. Design, build, and fight your way to victory.',
-    prize: '₹75,000',
-    team: '3-5 members',
-    date: 'March 16, 2026',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop',
-    featured: true,
-    registrationFee: '₹500',
-    venue: 'Arena Ground',
-  },
-  {
-    id: 3,
-    title: 'Valorant Championship',
-    category: 'gaming',
-    description: 'Compete in the ultimate esports showdown with teams from across the country. Show your tactical skills in this 5v5 shooter.',
-    prize: '₹40,000',
-    team: '5 members',
-    date: 'March 15, 2026',
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop',
-    featured: false,
-    registrationFee: '₹300',
-    venue: 'E-Sports Arena',
-  },
-  {
-    id: 4,
-    title: 'AI Innovation Challenge',
-    category: 'ai',
-    description: 'Build AI solutions to solve real-world problems in this 48-hour hackathon. Push the boundaries of artificial intelligence.',
-    prize: '₹1,00,000',
-    team: '2-4 members',
-    date: 'March 15-17, 2026',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
-    featured: true,
-    registrationFee: '₹400',
-    venue: 'Innovation Lab',
-  },
-  {
-    id: 5,
-    title: 'Drone Racing',
-    category: 'robotics',
-    description: 'Navigate your drone through challenging obstacle courses at high speed. Test your piloting skills in this adrenaline-pumping event.',
-    prize: '₹30,000',
-    team: '1-2 members',
-    date: 'March 16, 2026',
-    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&h=400&fit=crop',
-    featured: false,
-    registrationFee: '₹250',
-    venue: 'Open Ground',
-  },
-  {
-    id: 6,
-    title: 'UI/UX Designathon',
-    category: 'design',
-    description: 'Design intuitive and beautiful interfaces for the apps of tomorrow. Showcase your creativity and user-centric thinking.',
-    prize: '₹35,000',
-    team: '1-3 members',
-    date: 'March 16, 2026',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-    featured: false,
-    registrationFee: '₹200',
-    venue: 'Design Studio',
-  },
-  {
-    id: 7,
-    title: 'Battle of Bands',
-    category: 'cultural',
-    description: 'Showcase your musical talent and compete for the ultimate rock glory. Electrify the audience with your performance.',
-    prize: '₹45,000',
-    team: '4-8 members',
-    date: 'March 16, 2026',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop',
-    featured: true,
-    registrationFee: '₹500',
-    venue: 'Main Stage',
-  },
-  {
-    id: 8,
-    title: 'CTF Cybersecurity',
-    category: 'technical',
-    description: 'Capture the flag competition testing your hacking and security skills. Find vulnerabilities and claim the flags.',
-    prize: '₹60,000',
-    team: '2-4 members',
-    date: 'March 16, 2026',
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop',
-    featured: false,
-    registrationFee: '₹300',
-    venue: 'Cyber Lab',
-  },
-  {
-    id: 9,
-    title: 'Line Follower',
-    category: 'robotics',
-    description: 'Build an autonomous robot that can follow a line path. Optimize for speed and accuracy to win.',
-    prize: '₹25,000',
-    team: '2-3 members',
-    date: 'March 15, 2026',
-    image: 'https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=600&h=400&fit=crop',
-    featured: false,
-    registrationFee: '₹200',
-    venue: 'Robotics Lab',
-  },
-  {
-    id: 10,
-    title: 'FIFA Tournament',
-    category: 'gaming',
-    description: 'Show your virtual football skills in this FIFA tournament. Compete against the best and claim the championship.',
-    prize: '₹20,000',
-    team: '1 member',
-    date: 'March 17, 2026',
-    image: 'https://images.unsplash.com/photo-1493711662062-fa541f7f76cb?w=600&h=400&fit=crop',
-    featured: false,
-    registrationFee: '₹150',
-    venue: 'Gaming Zone',
-  },
-  {
-    id: 11,
-    title: 'Dance Fusion',
-    category: 'cultural',
-    description: 'Express yourself through dance. Solo and group performances welcome in all dance styles.',
-    prize: '₹35,000',
-    team: '1-8 members',
-    date: 'March 17, 2026',
-    image: 'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=600&h=400&fit=crop',
-    featured: false,
-    registrationFee: '₹200',
-    venue: 'Main Stage',
-  },
-  {
-    id: 12,
-    title: 'Web Development Sprint',
-    category: 'technical',
-    description: 'Build a complete web application in 6 hours. Speed, creativity, and functionality matter.',
-    prize: '₹40,000',
-    team: '1-3 members',
-    date: 'March 15, 2026',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop',
-    featured: false,
-    registrationFee: '₹250',
-    venue: 'Lab 102',
-  },
 ];
 
 export default function EventsPage() {
@@ -199,11 +41,15 @@ export default function EventsPage() {
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark-800/50 border border-accent-cyan/30 mb-6">
+            <Rocket size={14} className="text-accent-cyan" />
+            <span className="text-xs font-mono text-accent-cyan tracking-wider">JANUARY 12-15, 2026</span>
+          </div>
           <h1 className="font-heading font-bold text-5xl md:text-6xl lg:text-7xl mb-6">
             <span className="gradient-text">All Events</span>
           </h1>
           <p className="max-w-2xl mx-auto text-gray-400 text-lg">
-            Explore our diverse range of events at Almago - from technical competitions to cultural showcases.
+            Explore {allEvents.length}+ exciting events at Almago 2026 - from technical competitions to cultural showcases. Four days of innovation and fun!
           </p>
         </div>
       </section>
@@ -253,15 +99,27 @@ export default function EventsPage() {
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Results Count */}
+          <p className="text-gray-400 mb-8">
+            Showing {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''}
+          </p>
+
           {filteredEvents.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-gray-400 text-lg">No events found matching your criteria.</p>
+              <button 
+                onClick={() => { setActiveCategory('all'); setSearchQuery(''); }}
+                className="mt-4 text-accent-cyan hover:underline"
+              >
+                Clear filters
+              </button>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredEvents.map((event) => (
-                <div
+                <Link
                   key={event.id}
+                  href={`/events/${event.slug}`}
                   className="group card-cyber overflow-hidden"
                 >
                   {/* Image */}
@@ -274,7 +132,7 @@ export default function EventsPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/20 to-transparent"></div>
                     {event.featured && (
                       <div className="absolute top-3 right-3 px-3 py-1 bg-accent-orange/90 rounded-full text-xs font-semibold text-dark-900">
-                        FEATURED
+                        ⭐ FEATURED
                       </div>
                     )}
                     <div className="absolute bottom-3 left-3 px-3 py-1 bg-dark-900/80 rounded-full text-xs font-mono text-accent-cyan border border-accent-cyan/30">
@@ -295,7 +153,7 @@ export default function EventsPage() {
                     <div className="space-y-2 mb-4 text-sm">
                       <div className="flex items-center justify-between">
                         <span className="text-gray-500">Prize Pool:</span>
-                        <span className="text-accent-cyan font-semibold">{event.prize}</span>
+                        <span className="text-accent-orange font-semibold">{event.prize}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-gray-500">Team Size:</span>
@@ -311,16 +169,13 @@ export default function EventsPage() {
                       </div>
                     </div>
 
-                    {/* Register Button */}
-                    <Link
-                      href={`/events/${event.id}`}
-                      className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-accent-cyan/20 to-accent-purple/20 border border-accent-cyan/30 rounded-lg text-sm font-medium text-accent-cyan hover:border-accent-cyan hover:bg-accent-cyan/10 transition-all group/btn"
-                    >
-                      Register Now
-                      <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
+                    {/* View Details Button */}
+                    <div className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-accent-cyan/20 to-accent-purple/20 border border-accent-cyan/30 rounded-lg text-sm font-medium text-accent-cyan group-hover:border-accent-cyan group-hover:bg-accent-cyan/10 transition-all">
+                      View Details
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}

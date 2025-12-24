@@ -3,112 +3,20 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Clock, Users, ArrowRight, Wrench, Cpu, Code, Palette, Brain, Rocket, Calendar, MapPin, CheckCircle } from 'lucide-react';
+import { Clock, Users, ArrowRight, Wrench, Calendar, MapPin, CheckCircle, Brain, Cpu, Code, Palette, Rocket, Shield, Smartphone, Link as LinkIcon } from 'lucide-react';
+import { allWorkshops } from '@/lib/data';
 
-const workshops = [
-  {
-    id: 1,
-    title: 'Machine Learning Fundamentals',
-    instructor: 'Dr. Priya Sharma',
-    designation: 'AI Research Lead, TechCorp',
-    duration: '4 hours',
-    capacity: '50 seats',
-    date: 'March 15, 2026',
-    time: '10:00 AM - 2:00 PM',
-    venue: 'Lab 101',
-    icon: Brain,
-    color: 'from-purple-500 to-pink-500',
-    fee: '₹500',
-    description: 'Learn the basics of ML algorithms, data preprocessing, and model training with hands-on projects. This workshop covers supervised learning, neural networks basics, and practical implementation using Python.',
-    prerequisites: ['Basic Python knowledge', 'Understanding of statistics', 'Laptop with Python installed'],
-    topics: ['Introduction to ML', 'Data Preprocessing', 'Supervised Learning', 'Model Training', 'Evaluation Metrics'],
-  },
-  {
-    id: 2,
-    title: 'IoT & Embedded Systems',
-    instructor: 'Prof. Rajesh Kumar',
-    designation: 'Professor, Electronics Dept.',
-    duration: '6 hours',
-    capacity: '40 seats',
-    date: 'March 15, 2026',
-    time: '9:00 AM - 3:00 PM',
-    venue: 'Electronics Lab',
-    icon: Cpu,
-    color: 'from-cyan-500 to-blue-500',
-    fee: '₹600',
-    description: 'Build smart devices using Arduino and Raspberry Pi. Create your own IoT project from scratch. Learn about sensors, actuators, and cloud connectivity.',
-    prerequisites: ['Basic electronics knowledge', 'C programming basics'],
-    topics: ['Arduino Basics', 'Sensor Integration', 'Raspberry Pi Setup', 'IoT Protocols', 'Cloud Integration'],
-  },
-  {
-    id: 3,
-    title: 'Full Stack Web Development',
-    instructor: 'Arun Menon',
-    designation: 'Senior Developer, InnovateLabs',
-    duration: '8 hours',
-    capacity: '60 seats',
-    date: 'March 16, 2026',
-    time: '9:00 AM - 5:00 PM',
-    venue: 'Lab 102',
-    icon: Code,
-    color: 'from-green-500 to-emerald-500',
-    fee: '₹800',
-    description: 'Master React, Node.js, and MongoDB. Build and deploy a complete web application. Learn modern development practices and deployment strategies.',
-    prerequisites: ['HTML/CSS basics', 'JavaScript fundamentals', 'Laptop with Node.js installed'],
-    topics: ['React Fundamentals', 'Node.js & Express', 'MongoDB Basics', 'REST APIs', 'Deployment'],
-  },
-  {
-    id: 4,
-    title: 'UI/UX Design Masterclass',
-    instructor: 'Sneha Patel',
-    designation: 'Design Director, DesignHub',
-    duration: '5 hours',
-    capacity: '45 seats',
-    date: 'March 16, 2026',
-    time: '10:00 AM - 3:00 PM',
-    venue: 'Design Studio',
-    icon: Palette,
-    color: 'from-orange-500 to-red-500',
-    fee: '₹450',
-    description: 'Learn design thinking, wireframing, and prototyping using Figma and Adobe XD. Create user-centered designs that delight users.',
-    prerequisites: ['Basic design sense', 'Figma account (free)'],
-    topics: ['Design Thinking', 'User Research', 'Wireframing', 'Prototyping', 'Usability Testing'],
-  },
-  {
-    id: 5,
-    title: 'Drone Building & Programming',
-    instructor: 'Vikram Singh',
-    designation: 'Founder, DroneWorks',
-    duration: '7 hours',
-    capacity: '30 seats',
-    date: 'March 17, 2026',
-    time: '9:00 AM - 4:00 PM',
-    venue: 'Robotics Lab',
-    icon: Rocket,
-    color: 'from-yellow-500 to-orange-500',
-    fee: '₹1200',
-    description: 'Build your own drone from scratch and learn to program autonomous flight patterns. Includes drone kit that you take home!',
-    prerequisites: ['Basic electronics knowledge', 'Interest in drones'],
-    topics: ['Drone Components', 'Assembly', 'Flight Controllers', 'Programming', 'Autonomous Flight'],
-  },
-  {
-    id: 6,
-    title: 'Cybersecurity Essentials',
-    instructor: 'Ananya Reddy',
-    designation: 'Security Consultant, CyberShield',
-    duration: '5 hours',
-    capacity: '50 seats',
-    date: 'March 17, 2026',
-    time: '10:00 AM - 3:00 PM',
-    venue: 'Cyber Lab',
-    icon: Wrench,
-    color: 'from-red-500 to-pink-500',
-    fee: '₹550',
-    description: 'Explore ethical hacking, penetration testing, and network security fundamentals. Learn to identify and fix vulnerabilities.',
-    prerequisites: ['Basic networking knowledge', 'Linux basics preferred'],
-    topics: ['Network Security', 'Web Vulnerabilities', 'Penetration Testing', 'Security Tools', 'Best Practices'],
-  },
-];
+const iconMap: Record<string, any> = {
+  Brain,
+  Cpu,
+  Code,
+  Palette,
+  Rocket,
+  Shield,
+  Smartphone,
+  Link: LinkIcon,
+  Wrench,
+};
 
 export default function WorkshopsPage() {
   return (
@@ -132,8 +40,32 @@ export default function WorkshopsPage() {
             <span className="gradient-text">Workshops</span>
           </h1>
           <p className="max-w-2xl mx-auto text-gray-400 text-lg">
-            Deep dive into cutting-edge technologies with our expert-led workshops at Almago. Get hands-on experience and build projects you can showcase.
+            Deep dive into cutting-edge technologies with our {allWorkshops.length} expert-led workshops at Almago 2026. Get hands-on experience and build projects you can showcase.
           </p>
+        </div>
+      </section>
+
+      {/* Workshop Stats */}
+      <section className="relative py-8 border-y border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="text-3xl font-heading font-bold text-accent-cyan mb-1">{allWorkshops.length}</div>
+              <div className="text-gray-400 text-sm">Workshops</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-heading font-bold text-accent-purple mb-1">40+</div>
+              <div className="text-gray-400 text-sm">Hours of Learning</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-heading font-bold text-accent-pink mb-1">8</div>
+              <div className="text-gray-400 text-sm">Expert Instructors</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-heading font-bold text-accent-orange mb-1">350+</div>
+              <div className="text-gray-400 text-sm">Total Seats</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -145,12 +77,13 @@ export default function WorkshopsPage() {
         
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
-            {workshops.map((workshop) => {
-              const Icon = workshop.icon;
+            {allWorkshops.map((workshop) => {
+              const Icon = iconMap[workshop.icon] || Wrench;
               return (
-                <div
+                <Link
                   key={workshop.id}
-                  className="card-cyber p-8 hover:border-accent-purple/50"
+                  href={`/workshops/${workshop.slug}`}
+                  className="block card-cyber p-8 hover:border-accent-purple/50 group"
                 >
                   <div className="grid lg:grid-cols-3 gap-8">
                     {/* Left - Main Info */}
@@ -162,7 +95,7 @@ export default function WorkshopsPage() {
                           </div>
                         </div>
                         <div>
-                          <h3 className="font-heading font-bold text-2xl text-white mb-1">
+                          <h3 className="font-heading font-bold text-2xl text-white mb-1 group-hover:text-accent-purple transition-colors">
                             {workshop.title}
                           </h3>
                           <p className="text-gray-400">
@@ -178,7 +111,7 @@ export default function WorkshopsPage() {
                       <div className="mb-6">
                         <h4 className="text-sm font-semibold text-gray-300 mb-3">What you'll learn:</h4>
                         <div className="flex flex-wrap gap-2">
-                          {workshop.topics.map((topic) => (
+                          {workshop.topics.slice(0, 5).map((topic) => (
                             <span
                               key={topic}
                               className="px-3 py-1 bg-dark-700 rounded-full text-sm text-gray-400 border border-gray-700"
@@ -186,6 +119,11 @@ export default function WorkshopsPage() {
                               {topic}
                             </span>
                           ))}
+                          {workshop.topics.length > 5 && (
+                            <span className="px-3 py-1 bg-dark-700 rounded-full text-sm text-accent-purple border border-gray-700">
+                              +{workshop.topics.length - 5} more
+                            </span>
+                          )}
                         </div>
                       </div>
 
@@ -193,7 +131,7 @@ export default function WorkshopsPage() {
                       <div>
                         <h4 className="text-sm font-semibold text-gray-300 mb-2">Prerequisites:</h4>
                         <ul className="space-y-1">
-                          {workshop.prerequisites.map((prereq) => (
+                          {workshop.prerequisites.slice(0, 3).map((prereq) => (
                             <li key={prereq} className="flex items-center gap-2 text-sm text-gray-500">
                               <CheckCircle size={14} className="text-green-500" />
                               {prereq}
@@ -203,49 +141,63 @@ export default function WorkshopsPage() {
                       </div>
                     </div>
 
-                    {/* Right - Details Card */}
-                    <div className="bg-dark-700/50 rounded-xl p-6 border border-gray-800">
-                      <div className="space-y-4 mb-6">
-                        <div className="flex items-center gap-3 text-sm">
-                          <Calendar size={16} className="text-accent-cyan" />
-                          <div>
-                            <p className="text-white">{workshop.date}</p>
-                            <p className="text-gray-500">{workshop.time}</p>
-                          </div>
+                    {/* Right - Quick Info */}
+                    <div className="lg:border-l lg:border-gray-800 lg:pl-8">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3 text-gray-400">
+                          <Calendar size={18} className="text-accent-cyan" />
+                          <span>{workshop.date}</span>
                         </div>
-                        <div className="flex items-center gap-3 text-sm">
-                          <MapPin size={16} className="text-accent-purple" />
-                          <span className="text-gray-300">{workshop.venue}</span>
+                        <div className="flex items-center gap-3 text-gray-400">
+                          <Clock size={18} className="text-accent-purple" />
+                          <span>{workshop.time}</span>
                         </div>
-                        <div className="flex items-center gap-3 text-sm">
-                          <Clock size={16} className="text-accent-orange" />
-                          <span className="text-gray-300">{workshop.duration}</span>
+                        <div className="flex items-center gap-3 text-gray-400">
+                          <MapPin size={18} className="text-accent-pink" />
+                          <span>{workshop.venue}</span>
                         </div>
-                        <div className="flex items-center gap-3 text-sm">
-                          <Users size={16} className="text-accent-pink" />
-                          <span className="text-gray-300">{workshop.capacity}</span>
+                        <div className="flex items-center gap-3 text-gray-400">
+                          <Users size={18} className="text-accent-orange" />
+                          <span>{workshop.capacity}</span>
                         </div>
                       </div>
 
-                      <div className="border-t border-gray-700 pt-4 mb-4">
-                        <div className="flex items-center justify-between mb-4">
-                          <span className="text-gray-400">Registration Fee</span>
-                          <span className="font-heading font-bold text-2xl text-accent-cyan">{workshop.fee}</span>
+                      <div className="mt-6 pt-6 border-t border-gray-800">
+                        <div className="text-center mb-4">
+                          <span className="text-gray-500 text-sm">Workshop Fee</span>
+                          <p className="text-2xl font-heading font-bold text-accent-purple">{workshop.fee}</p>
+                        </div>
+                        <div className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-accent-purple/20 to-accent-pink/20 border border-accent-purple/30 rounded-lg text-sm font-medium text-accent-purple group-hover:border-accent-purple group-hover:bg-accent-purple/10 transition-all">
+                          View Details
+                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
-
-                      <Link
-                        href={`/workshops/${workshop.id}`}
-                        className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-accent-purple to-accent-pink text-white font-heading font-semibold uppercase tracking-wider rounded-lg hover:opacity-90 transition-opacity"
-                      >
-                        Register Now
-                        <ArrowRight size={16} />
-                      </Link>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-16 bg-dark-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-heading font-bold text-3xl text-white mb-4">
+            Can't decide which workshop to attend?
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Register for multiple workshops and get a combo discount! Contact us for more details.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/register" className="btn-cyber inline-flex items-center justify-center gap-2">
+              Register Now
+              <ArrowRight size={16} />
+            </Link>
+            <Link href="/contact" className="px-6 py-3 border border-gray-700 rounded-lg text-gray-300 hover:border-accent-cyan hover:text-accent-cyan transition-colors">
+              Contact for Combo Offers
+            </Link>
           </div>
         </div>
       </section>

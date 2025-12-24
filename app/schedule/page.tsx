@@ -20,7 +20,7 @@ export default function SchedulePage() {
             <span className="gradient-text">Event Schedule</span>
           </h1>
           <p className="max-w-2xl mx-auto text-gray-400 text-lg">
-            Three days of non-stop innovation, learning, and excitement. Plan your Almago journey.
+            Four days of non-stop innovation, learning, and excitement. Plan your Almago journey - January 12-15, 2026.
           </p>
         </div>
       </section>

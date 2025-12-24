@@ -81,8 +81,11 @@ export default function Hero() {
         <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 font-light mb-4">
           <span className="text-accent-cyan font-medium">Leading a Leap Forward</span>
         </p>
+        <p className="max-w-2xl mx-auto text-gray-400 mb-4">
+          <span className="text-accent-orange font-semibold">January 12-15, 2026</span>
+        </p>
         <p className="max-w-2xl mx-auto text-gray-400 mb-12">
-          Amrita Vishwa Vidyapeetham, Bangalore presents three days of groundbreaking innovation, 
+          Amrita Vishwa Vidyapeetham, Bangalore presents four days of groundbreaking innovation, 
           immersive workshops, thrilling competitions, and unforgettable cultural performances.
         </p>
 

@@ -1,76 +1,33 @@
 'use client';
 
 import Link from 'next/link';
-import { Clock, Users, ArrowRight, Wrench, Cpu, Code, Palette, Brain, Rocket } from 'lucide-react';
+import { Clock, Users, ArrowRight, Wrench, Cpu, Code, Palette, Brain, Rocket, Shield, Smartphone } from 'lucide-react';
+import { allWorkshops } from '@/lib/data';
 
-const workshops = [
-  {
-    id: 1,
-    title: 'Machine Learning Fundamentals',
-    instructor: 'Dr. Priya Sharma',
-    duration: '4 hours',
-    capacity: '50 seats',
-    date: 'March 15, 2026',
-    icon: Brain,
-    color: 'from-purple-500 to-pink-500',
-    description: 'Learn the basics of ML algorithms, data preprocessing, and model training with hands-on projects.',
-  },
-  {
-    id: 2,
-    title: 'IoT & Embedded Systems',
-    instructor: 'Prof. Rajesh Kumar',
-    duration: '6 hours',
-    capacity: '40 seats',
-    date: 'March 15, 2026',
-    icon: Cpu,
-    color: 'from-cyan-500 to-blue-500',
-    description: 'Build smart devices using Arduino and Raspberry Pi. Create your own IoT project from scratch.',
-  },
-  {
-    id: 3,
-    title: 'Full Stack Web Development',
-    instructor: 'Arun Menon',
-    duration: '8 hours',
-    capacity: '60 seats',
-    date: 'March 16, 2026',
-    icon: Code,
-    color: 'from-green-500 to-emerald-500',
-    description: 'Master React, Node.js, and MongoDB. Build and deploy a complete web application.',
-  },
-  {
-    id: 4,
-    title: 'UI/UX Design Masterclass',
-    instructor: 'Sneha Patel',
-    duration: '5 hours',
-    capacity: '45 seats',
-    date: 'March 16, 2026',
-    icon: Palette,
-    color: 'from-orange-500 to-red-500',
-    description: 'Learn design thinking, wireframing, and prototyping using Figma and Adobe XD.',
-  },
-  {
-    id: 5,
-    title: 'Drone Building & Programming',
-    instructor: 'Vikram Singh',
-    duration: '7 hours',
-    capacity: '30 seats',
-    date: 'March 17, 2026',
-    icon: Rocket,
-    color: 'from-yellow-500 to-orange-500',
-    description: 'Build your own drone from scratch and learn to program autonomous flight patterns.',
-  },
-  {
-    id: 6,
-    title: 'Cybersecurity Essentials',
-    instructor: 'Ananya Reddy',
-    duration: '5 hours',
-    capacity: '50 seats',
-    date: 'March 17, 2026',
-    icon: Wrench,
-    color: 'from-red-500 to-pink-500',
-    description: 'Explore ethical hacking, penetration testing, and network security fundamentals.',
-  },
-];
+const iconMap: Record<string, any> = {
+  Brain,
+  Cpu,
+  Code,
+  Palette,
+  Rocket,
+  Shield,
+  Smartphone,
+  Wrench,
+};
+
+// Use workshops from shared data for homepage display
+const workshops = allWorkshops.slice(0, 6).map(workshop => ({
+  id: workshop.id,
+  slug: workshop.slug,
+  title: workshop.title,
+  instructor: workshop.instructor,
+  duration: workshop.duration,
+  capacity: workshop.capacity,
+  date: workshop.date,
+  icon: iconMap[workshop.icon] || Brain,
+  color: workshop.color,
+  description: workshop.description,
+}));
 
 export default function Workshops() {
   return (
@@ -144,7 +101,7 @@ export default function Workshops() {
 
                 {/* Register Button */}
                 <Link
-                  href={`/workshops/${workshop.id}`}
+                  href={`/workshops/${workshop.slug}`}
                   className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-accent-purple/20 to-accent-pink/20 border border-accent-purple/30 rounded-lg text-sm font-medium text-accent-purple hover:border-accent-purple hover:bg-accent-purple/10 transition-all group/btn"
                 >
                   Register Now
